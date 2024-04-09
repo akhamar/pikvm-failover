@@ -296,7 +296,7 @@ WantedBy=multi-user.target
 
 ## Debug
 
-> journalctl -ut failover.service
+> journalctl -fu failover.service
 
 ## Credit
 
