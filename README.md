@@ -16,7 +16,7 @@ DNSSEC=no
 # Use same IP by forcing to use MAC address for clientID
 ClientIdentifier=mac
 # https://github.com/pikvm/pikvm/issues/583
-RouteMetric=10
+RouteMetric=20
 ```
 
 > nano /etc/systemd/network/wlan0.network
