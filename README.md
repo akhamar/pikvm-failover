@@ -60,10 +60,10 @@ IF_FAILOVER="wlan0"
 # the metric to set the FAILOVER to when disabled
 METRIC_FAILOVER_OFF="999"
 # the metric to set the FAILOVER to when ENABLED
-METRIC_FAILOVER_ACTIVE="3"
+METRIC_FAILOVER_ACTIVE="10"
 
 # this number of pings has to fail for us to change state
-FAILOVER_PING_THRESHOLD=6
+FAILOVER_PING_THRESHOLD=2
 
 # the hosts we ping to figure out if internet is alive.
 # order matters, so we check two separate providers to make sure it's not the other end
