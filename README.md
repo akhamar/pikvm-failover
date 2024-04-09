@@ -270,7 +270,7 @@ while true; do
 done
 ```
 
-> chmod 750 /etc/systemd/network/wlan0.network
+> chmod 750 /usr/local/bin/failover.sh
 
 ### Service
 
