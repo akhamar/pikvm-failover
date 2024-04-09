@@ -60,7 +60,7 @@ IF_FAILOVER="wlan0"
 # the metric to set the FAILOVER to when disabled
 METRIC_FAILOVER_OFF="999"
 # the metric to set the FAILOVER to when ENABLED
-METRIC_FAILOVER_ACTIVE="5"
+METRIC_FAILOVER_ACTIVE="3"
 
 # this number of pings has to fail for us to change state
 FAILOVER_PING_THRESHOLD=6
@@ -81,7 +81,7 @@ PING_WAIT_FAILOVER=5
 PING_LOOPS=1
 
 # how often should we check
-CHECK_MAIN_INTERVAL=30
+CHECK_MAIN_INTERVAL=10
 
 # check whether IF_FAILOVER is working every X seconds
 CHECK_FAILOVER_INTERVAL=600
