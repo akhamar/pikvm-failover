@@ -229,8 +229,12 @@ function check() {
       echo "[CHANGE] Ping through main IF {$IF_MAIN} worked, RESTORING"
       # we need to re-write the route so it lowers the metric
       FAILOVER_GW=$(ip route list | grep "^default" | grep "${IF_FAILOVER}" | sed "s:.*via \([.0-9]*\).*:\1:")
-      ip route del default via ${FAILOVER_GW}
-      ip route add default via ${FAILOVER_GW} dev ${IF_FAILOVER} metric ${METRIC_FAILOVER_OFF}
+      FAILOVER_GW_IP=$(echo ${FAILOVER_GW} | tr ' ' '\n' | sort -u)
+      for currentFailoverGW in ${FAILOVER_GW}
+      do
+        ip route del default via ${currentFailoverGW}
+      done
+      ip route add default via ${FAILOVER_GW_IP} dev ${IF_FAILOVER} metric ${METRIC_FAILOVER_OFF}
       FAILOVER_DUE_TO_MISSING_ROUTE=false
     fi
     if [[ "${FAILOVER_DUE_TO_MISSING_ROUTE}" == true ]]; then
@@ -246,8 +250,12 @@ function check() {
       echo "[CHANGE] At least ${FAILOVER_PING_THRESHOLD} pings failed in a row, FAILING OVER"
       # we need to re-write the route so it lowers the metric
       FAILOVER_GW=$(ip route list | grep "^default" | grep "${IF_FAILOVER}" | sed "s:.*via \([.0-9]*\).*:\1:")
-      ip route del default via ${FAILOVER_GW}
-      ip route add default via ${FAILOVER_GW} dev ${IF_FAILOVER} metric ${METRIC_FAILOVER_ACTIVE}
+      FAILOVER_GW_IP=$(echo ${FAILOVER_GW} | tr ' ' '\n' | sort -u)
+      for currentFailoverGW in ${FAILOVER_GW}
+      do
+        ip route del default via ${currentFailoverGW}
+      done
+      ip route add default via ${FAILOVER_GW_IP} dev ${IF_FAILOVER} metric ${METRIC_FAILOVER_ACTIVE}
     fi
   fi
 
